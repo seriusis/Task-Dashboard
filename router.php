@@ -25,7 +25,7 @@ $router->get('/form', 'FormController@index');
 $router->post('/success', 'FormController@success');
 
 $router->get('/list', 'TaskController@list');
-$router->get('/article/{id}', 'TaskController@task');
+$router->get('/task/{id}', 'TaskController@task');
 $router->get('/create', 'TaskController@create');
 $router->post('/create', 'TaskController@create');
 

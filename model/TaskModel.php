@@ -21,7 +21,7 @@ class TaskModel extends BaseModel{
         Capsule::table($this->table)->insert([
             'name' => $data['name'],
             'text' => $data['text'],
-            'priority' => $data['priority'],
+            'mark' => $data['mark'],
             'status' => $data['status'],
             'date' => date('Y-m-d H:i:s')
         ]);
@@ -32,7 +32,7 @@ class TaskModel extends BaseModel{
         Capsule::table($this->table)->where('id','=',$data['id'])->update([
             'name' => $data['name'],
             'text' => $data['text'],
-            'priority' => $data['priority'],
+            'mark' => $data['mark'],
             'status' => $data['status']
         ])
         ;
