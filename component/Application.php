@@ -30,7 +30,6 @@ class Application{
 // Setup the Eloquent ORM... (optional; unless you've used setEventDispatcher())
         $capsule->bootEloquent();
 
-
         require_once 'router.php';
     }
 }

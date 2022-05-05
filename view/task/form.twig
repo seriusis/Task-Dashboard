@@ -1,0 +1,22 @@
+{%  extends "/common/layout.twig" %}
+
+{% block content %}
+<form method="post" action="{{ action }}">
+    <input name="id" value="{{ item.id }}" type="hidden">
+    <input name="name" value="{{ item.name }}" type="text" placeholder="Name">
+    <input type="text" name="text" value="{{ item.text }}" placeholder="Text">
+    <select name="priority">
+        <option value="1" {% if item.priority == 1 %} selected="selected" {% endif %}>1</option>
+        <option value="2" {% if item.priority == 2 %} selected="selected" {% endif %}>2</option>
+        <option value="3" {% if item.priority == 3 %} selected="selected" {% endif %}>3</option>
+        <option value="4" {% if item.priority == 4 %} selected="selected" {% endif %}>4</option>
+        <option value="5" {% if item.priority == 5 %} selected="selected" {% endif %}>5</option>
+    </select>
+    <select name="status">
+        <option value="1" {% if item.status %} selected="selected" {% endif %}>Enable</option>
+        <option value="0" {% if not item.status %} selected="selected" {% endif %}>Disable</option>
+    </select>
+    <button type="submit">Save post</button>
+</form>
+
+{% endblock %}
