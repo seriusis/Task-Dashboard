@@ -1,0 +1,26 @@
+.mark{
+    width: 50px;
+    height: 8px;
+    border-radius: 9px;
+    display: block;
+}
+.mark-1{
+    background: #63BD54;
+}
+.mark-2{
+    background: #F1D529;
+}
+.mark-3{
+    background: #FD9E2D;
+}
+.mark-4{
+    background: #117ABD;
+}
+.mark-5{
+    background: #C278DE;
+}
+.mark-6{
+
+    background: #E9594A;
+
+}

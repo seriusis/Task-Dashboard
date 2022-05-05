@@ -1,0 +1,12 @@
+<div class="card mb-3">
+    <div class="card-body">
+        {% if item.mark %}<span class="mark mark-{{ item.mark }}"></span>{% endif %}
+        <div class="d-flex justify-content-between">
+            <h5 class="card-title">{{ item.name }}</h5>
+            <span class="text-secondary">{{ item.date }}</span>
+        </div>
+        <p class="card-text">{{ item.text }}</p>
+        <a href="/task/{{ item.id }}" class="link-primary">Read more...</a>
+        <a href="/update/{{ item.id }}"  class="link-secondary">Edit</a>
+    </div>
+</div>
