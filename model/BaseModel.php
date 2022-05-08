@@ -35,6 +35,6 @@ class BaseModel{
     }
 
     public function delete($id){
-
+        Capsule::table($this->table)->delete($id);
     }
 }

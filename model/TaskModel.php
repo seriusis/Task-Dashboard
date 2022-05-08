@@ -16,6 +16,13 @@ class TaskModel extends BaseModel{
     }
 
 
+    public function getAll()
+    {
+        $db = Capsule::table($this->table)->orderBy('sort_order');
+        return $db->get()->all();
+    }
+
+
     public function create($data)
     {
         Capsule::table($this->table)->insert([
@@ -23,7 +30,8 @@ class TaskModel extends BaseModel{
             'text' => $data['text'],
             'mark' => $data['mark'],
             'status' => $data['status'],
-            'date' => date('Y-m-d H:i:s')
+            'date' => date('Y-m-d H:i:s'),
+            'sort_order' => $data['sort_order']
         ]);
     }
 
@@ -33,7 +41,8 @@ class TaskModel extends BaseModel{
             'name' => $data['name'],
             'text' => $data['text'],
             'mark' => $data['mark'],
-            'status' => $data['status']
+            'status' => $data['status'],
+            'sort_order' => $data['sort_order']
         ])
         ;
     }

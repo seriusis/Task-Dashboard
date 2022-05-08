@@ -32,5 +32,7 @@ $router->post('/create', 'TaskController@create');
 $router->get('/update/{id}', 'TaskController@update');
 $router->post('/update/{id}', 'TaskController@update');
 
+$router->get('/delete/{id}','TaskController@delete');
+
 
 $router->run();

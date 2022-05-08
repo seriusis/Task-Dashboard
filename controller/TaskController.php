@@ -50,4 +50,11 @@ class TaskController{
 
 
     }
+
+    public static function delete($id){
+        $model = new TaskModel();
+        $model->delete($id);
+        header('Location:/list');
+
+    }
 }
