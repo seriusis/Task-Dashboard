@@ -1,6 +1,8 @@
 <?php
 
-
+namespace app;
+use Bramus\Router\Router;
+use app\controller\UserController;
 
 //$route = $_SERVER['REQUEST_URI'];
 //$action = 'index';
@@ -15,7 +17,7 @@
 //$controller->$action();
 
 
-$router = new \Bramus\Router\Router();
+$router = new Router();
 
 $router->setNamespace('app\controller');
 
@@ -33,6 +35,17 @@ $router->get('/update/{id}', 'TaskController@update');
 $router->post('/update/{id}', 'TaskController@update');
 
 $router->get('/delete/{id}','TaskController@delete');
+
+$router->post('/login/', 'AuthController@login');
+$router->get('/logout/', 'AuthController@logout');
+
+
+
+$router->before('GET|POST','/list|task*|create|update*|delete*',function (){
+    if(!UserController::isAuth())  {
+        header('Location:/');
+    }
+});
 
 
 $router->run();

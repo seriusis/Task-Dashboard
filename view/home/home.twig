@@ -2,5 +2,14 @@
 
 {% block content %}
     Home page!
+
+
+    {% if isLogged %}
+        you are logged!
+    {% else %}
+        {% include "/user/login.twig" %}
+    {% endif %}
+
 {% endblock %}
+
 

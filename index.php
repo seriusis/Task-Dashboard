@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 use app\component\Application;
 
 use Illuminate\Database\Capsule\Manager as Capsule;

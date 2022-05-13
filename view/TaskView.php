@@ -8,26 +8,24 @@ class TaskView{
     public static function renderList($data){
         $loader = new FilesystemLoader(__DIR__.'/');
         $twig =  new Environment($loader);
-        echo $twig->render('task/list.twig', [
-            'items' => $data]
-        );
+        echo $twig->render('task/list.twig', $data);
     }
 
     public static function renderOne($data){
         $loader = new FilesystemLoader(__DIR__.'/');
         $twig =  new Environment($loader);
-        echo $twig->render('task/one.twig', ['item' => $data]);
+        echo $twig->render('task/one.twig', $data);
     }
 
-    public static function renderUpdateForm($id, $data){
+    public static function renderUpdateForm($data){
         $loader = new FilesystemLoader(__DIR__.'/');
         $twig =  new Environment($loader);
-        echo $twig->render('task/form.twig', ['action' => '/update/'.$id,'item' => $data]);
+        echo $twig->render('task/form.twig', $data);
     }
 
-    public static function renderCreateForm(){
+    public static function renderCreateForm($data){
         $loader = new FilesystemLoader(__DIR__.'/');
         $twig =  new Environment($loader);
-        echo $twig->render('task/form.twig', ['action' => '/create']);
+        echo $twig->render('task/form.twig', $data);
     }
 }

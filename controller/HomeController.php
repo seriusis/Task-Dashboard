@@ -5,10 +5,12 @@ namespace app\controller;
 use app\view\HomeView;
 
 class HomeController{
-
-
     public static function index():string{
-        HomeView::render();
+
+        $data['isLogged'] = UserController::isAuth();
+
+        HomeView::render($data);
+
         return self::class;
     }
 }
