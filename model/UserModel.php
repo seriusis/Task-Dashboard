@@ -11,13 +11,35 @@ class UserModel extends BaseModel {
     }
 
     public function getAuth($email, $password){
-        $db = Capsule::table($this->table)
+
+        return Capsule::table($this->table)
         ->where(['email' => $email, 'password' => md5($password)])
         ->get()
         ->pop();
-
-        return $db;
     }
+
+    public function register($name, $lastname, $email, $pasword){
+        return Capsule::table($this->table)
+            ->insert(
+                [
+                    'name' => $name,
+                    'lastname' => $lastname,
+                    'email' => $email,
+                    'password' => md5($pasword)
+                ]);
+    }
+
+    public function isExist($email){
+        return Capsule::table($this->table)
+            ->where('email','=',$email)
+            ->get()
+            ->pop();
+    }
+
+    public function delete($id){
+
+    }
+
 
 
 }

@@ -39,6 +39,8 @@ $router->get('/delete/{id}','TaskController@delete');
 $router->post('/login/', 'AuthController@login');
 $router->get('/logout/', 'AuthController@logout');
 
+$router->get('/register/','RegisterController@index');
+$router->post('/register/','RegisterController@register');
 
 
 $router->before('GET|POST','/list|task*|create|update*|delete*',function (){
