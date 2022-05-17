@@ -16,9 +16,11 @@ class TaskModel extends BaseModel{
     }
 
 
-    public function getAll()
+    public function getByDashboard($id)
     {
-        $db = Capsule::table($this->table)->orderBy('sort_order');
+        $db = Capsule::table($this->table)
+            ->where('dashboard_id','=',$id)
+            ->orderBy('sort_order');
         return $db->get()->all();
     }
 
@@ -31,7 +33,8 @@ class TaskModel extends BaseModel{
             'mark' => $data['mark'],
             'status' => $data['status'],
             'date' => date('Y-m-d H:i:s'),
-            'sort_order' => $data['sort_order']
+            'sort_order' => $data['sort_order'],
+            'dashboard_id' => $data['dashboard_id']
         ]);
     }
 

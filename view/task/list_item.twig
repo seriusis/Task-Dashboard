@@ -6,8 +6,8 @@
             <span class="text-secondary">{{ item.date }}</span>
         </div>
         <p class="card-text">{{ item.text }}</p>
-        <a href="/task/{{ item.id }}" class="link-primary">Read more...</a>
-        <a href="/update/{{ item.id }}"  class="link-secondary">Edit</a>
-        <a href="/delete/{{ item.id }}"  class="link-darka">Remove</a>
+        <a href="/dashboard/{{ item.dashboard_id }}/task/{{ item.id }}" class="link-primary">Read more...</a>
+        <a href="/dashboard/{{ item.dashboard_id }}/task/{{ item.id }}/update/"  class="link-secondary">Edit</a>
+        <a href="/dashboard/{{ item.dashboard_id }}/task/{{ item.id }}/delete/"  class="link-darka">Remove</a>
     </div>
 </div>

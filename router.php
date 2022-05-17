@@ -26,15 +26,15 @@ $router->get('/', 'HomeController@index');
 $router->get('/form', 'FormController@index');
 $router->post('/success', 'FormController@success');
 
-$router->get('/list', 'TaskController@list');
-$router->get('/task/{id}', 'TaskController@task');
-$router->get('/create', 'TaskController@create');
-$router->post('/create', 'TaskController@create');
+$router->get('/dashboard/(\d+)/task/(\d+)', 'TaskController@task');
+$router->get('/dashboard/(\d+)/task/create', 'TaskController@create');
+$router->post('/dashboard/(\d+)/task/create', 'TaskController@create');
 
-$router->get('/update/{id}', 'TaskController@update');
-$router->post('/update/{id}', 'TaskController@update');
+$router->get('/dashboard/(\d+)/task/(\d+)/update/', 'TaskController@update');
+$router->post('/dashboard/(\d+)/task/(\d+)/update/', 'TaskController@update');
 
-$router->get('/delete/{id}','TaskController@delete');
+$router->get('/dashboard/(\d+)/task/(\d+)/delete/','TaskController@delete');
+
 
 $router->post('/login/', 'AuthController@login');
 $router->get('/logout/', 'AuthController@logout');
@@ -42,8 +42,10 @@ $router->get('/logout/', 'AuthController@logout');
 $router->get('/register/','RegisterController@index');
 $router->post('/register/','RegisterController@register');
 
+$router->get('/dashboard','DashboardController@list');
+$router->get('/dashboard/(\d+)','DashboardController@get');
 
-$router->before('GET|POST','/list|task*|create|update*|delete*',function (){
+$router->before('GET|POST','list|task*|create|update*|delete*',function (){
     if(!UserController::isAuth())  {
         header('Location:/');
     }

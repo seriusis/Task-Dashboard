@@ -18,25 +18,27 @@ class TaskController{
     }
 
 
-    public static function task($id):string{
+    public static function task($dashboard_id, $task_id):string{
 
         $model = new TaskModel();
-        $data['item'] = $model->getById($id);
+        $data['item'] = $model->getById($task_id);
         $data['isLogged'] = UserController::isAuth();
 
         TaskView::renderOne($data);
         return self::class;
     }
 
-    public static function create():string{
+    public static function create($dashboard_id):string{
 
         $data['item'] = $_POST;
         $data['isLogged'] = UserController::isAuth();
-        $data['action'] = '/create';
+        $data['action'] = '/dashboard/'.$dashboard_id.'/task/create';
 
         if($_POST){
+            $_POST['dashboard_id'] = $dashboard_id;
             $model = new TaskModel();
             $model->create($_POST);
+            header('Location:/dashboard/'.$dashboard_id);
         }
 
         TaskView::renderCreateForm($data);
@@ -45,27 +47,27 @@ class TaskController{
 
     }
 
-    public static function update($id):string{
+    public static function update($dashboard_id, $task_id):string{
 
         $model = new TaskModel();
 
         if($_POST){
             $model->update($_POST);
-            header('Location:/list');
+            header('Location:/dashboard/'.$dashboard_id);
         }
-        $data['item'] = $model->getById($id);
+        $data['item'] = $model->getById($task_id);
         $data['isLogged'] = UserController::isAuth();
-        $data['action'] = '/update/'.$id;
+        $data['action'] = '/dashboard/'.$dashboard_id.'/task/'.$task_id.'/update/';
         TaskView::renderUpdateForm($data);
         return self::class;
 
 
     }
 
-    public static function delete($id){
+    public static function delete($dashboard_id, $task_id){
         $model = new TaskModel();
-        $model->delete($id);
-        header('Location:/list');
+        $model->delete($task_id);
+        header('Location:/dashboard/'.$dashboard_id);
 
     }
 }

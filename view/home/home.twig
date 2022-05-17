@@ -3,7 +3,10 @@
 {% block content %}
 
     {% if isLogged %}
-        you are logged!
+
+        {% include "/user/user_stats.twig" %}
+
+
     {% else %}
         {% include "/user/login.twig" %}
     {% endif %}

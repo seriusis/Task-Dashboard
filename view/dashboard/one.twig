@@ -1,0 +1,12 @@
+{% extends "/common/layout.twig" %}
+
+{% block content %}
+
+    <div class="d-flex justify-content-between align-middle">
+        <h3>{{ dashboard.name }}</h3> <a href="/dashboard/{{ dashboard.id }}/task/create/" class="btn btn-primary">Create Task</a>
+    </div>
+
+
+    {% include "/task/list.twig" %}
+
+{% endblock %}

@@ -39,7 +39,7 @@
 
     <div class="mb-3">
         <label class="form-label">Order</label>
-        <input name="sort_order" class="form-control" type="text" value="{{ item.sort_order }}" placeholder="Sort order">
+        <input name="sort_order" class="form-control" type="number" value="{% if item.sort_order%}{{ item.sort_order }}{% else %}0{% endif %}" placeholder="Sort order">
     </div>
 
     <button class="btn btn-primary" type="submit">Save post</button>
