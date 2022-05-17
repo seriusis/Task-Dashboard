@@ -1,8 +1,24 @@
+body{
+    background: #F6F8FA
+}
+.btn-primary{
+    background-color: #2BCBCF;
+    border-color: #2BCBCF;
+}
+.btn-primary:hover{
+    color: #0F49A2;
+   border-color: #0F49A2;
+    background-color: transparent;
+}
 .mark{
-    width: 50px;
-    height: 8px;
-    border-radius: 9px;
+    width: 4px;
+    height: 100%;
+    border-radius: 3px 0 0 3px;
     display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 0 !important;
 }
 .mark-1{
     background: #63BD54;
@@ -23,4 +39,39 @@
 
     background: #E9594A;
 
+}
+
+.card-column{
+    background: #fff;
+    padding: 8px;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(180, 180, 180, 0.53);
+}
+.card-column__top{
+    margin-bottom: 10px;
+}
+.card-column-stats{
+    color: #5e5e5e
+}
+.card-column-title{
+    font-weight: bold;
+    border-bottom: 1px solid #dcdcdc;
+    font-size: 20px;
+    margin-bottom: 0;
+    padding-bottom: 5px;
+}
+.card-body{
+    background: #F6F8FA;
+    border-radius: 4px;
+    padding: 8px 16px;
+}
+
+.card-column-done .mark{background: #ccc;}
+.card-column-done .card-body{
+   opacity: 0.4;
+    font-size: 12px;
+}
+.card-column-done .card-title{
+    text-decoration: line-through;
+    font-size: 14px;
 }

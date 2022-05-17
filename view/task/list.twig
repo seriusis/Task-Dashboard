@@ -1,26 +1,43 @@
 {% block content %}
-    <h4>Your tasks:</h4>
     <div class="row">
         <div class="col-sm-4">
-            <h4>ToDo</h4>
-            {% for item in items | filter((item) => (item.status == 'todo')) %}
-                {% include "/task/list_item.twig" %}
-            {% endfor %}
+            <div class="card-column card-todo">
+                <div class="card-column__top">
+                    <h4 class="card-column-title">ToDo</h4>
+                    <small class="card-column-stats">{{ items | filter((item) => (item.status == 'todo')) | length }} tasks</small>
+                </div>
+                {% for item in items | filter((item) => (item.status == 'todo')) %}
+                    {% include "/task/list_item.twig" %}
+                {% endfor %}
+
+                <a href="/dashboard/{{ dashboard.id }}/task/create/" class="card-column__btn-add btn btn-lg d-block text-center mt-1"><i class="bi bi-plus-circle"></i></a>
+
+            </div>
         </div>
 
 
         <div class="col-sm-4">
-            <h4>Doing</h4>
-            {% for item in items | filter((item) => (item.status == 'doing')) %}
-                {% include "/task/list_item.twig" %}
-            {% endfor %}
+            <div class="card-column card-column-doing">
+                <div class="card-column__top">
+                    <h4 class="card-column-title">Doing</h4>
+                    <small class="card-column-stats">{{ items | filter((item) => (item.status == 'doing')) | length }} tasks</small>
+                </div>
+                {% for item in items | filter((item) => (item.status == 'doing')) %}
+                    {% include "/task/list_item.twig" %}
+                {% endfor %}
+            </div>
         </div>
 
         <div class="col-sm-4">
-            <h4>Done</h4>
-            {% for item in items | filter((item) => (item.status == 'done')) %}
-                {% include "/task/list_item.twig" %}
-            {% endfor %}
+            <div class="card-column card-column-done">
+                <div class="card-column__top">
+                    <h4 class="card-column-title">Done</h4>
+                    <small class="card-column-stats">{{ items | filter((item) => (item.status == 'done')) | length }} tasks</small>
+                </div>
+                {% for item in items | filter((item) => (item.status == 'done')) %}
+                    {% include "/task/list_item.twig" %}
+                {% endfor %}
+            </div>
         </div>
 
     </div>
