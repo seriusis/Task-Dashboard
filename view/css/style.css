@@ -75,3 +75,6 @@ body{
     text-decoration: line-through;
     font-size: 14px;
 }
+[data-action='remove-checkitem'] > *{
+    pointer-events: none;
+}

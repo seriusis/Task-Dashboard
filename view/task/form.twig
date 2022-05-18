@@ -10,39 +10,106 @@
     </div>
 
     <div class="mb-3">
-        <label class="form-label">Text</label>
-        <textarea name="text" class="form-control" placeholder="Text">{{ item.text }}</textarea>
+        <div class="row">
+
+            <div class="col-sm-6">
+                <label class="form-label">CheckList</label>
+                <div class="form-control">
+                    <button id="add-checkitem" data-action="add-checkitem" class="btn btn-primary"><i class="bi bi-plus-square"></i> Add item</button>
+                    <ul id="checklist" class="list-unstyled mt-3">
+                        {% for checkitem in item.checklist %}
+                       <li class="form-check">
+                           <input name="checklist[{{ loop.index }}][done]" type="checkbox" value="1" {% if checkitem.done %} checked="checked" {% endif %} class="form-check-input">
+                           <label class="form-check-label">
+                               <input name="checklist[{{ loop.index }}][text]" value="{{ checkitem.text }}" class="form-control">
+                           </label>
+                           <button data-action="remove-checkitem" class="btn btn-sm"><i class="bi bi-x-lg text-warning"></i></button>
+                       </li>
+                        {% endfor %}
+                    </ul>
+
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <label class="form-label">Text</label>
+                <textarea name="text" class="form-control" placeholder="Text" rows="10">{{ item.text }}</textarea>
+            </div>
+        </div>
+
+
     </div>
 
-    <div class="mb-3">
-        <label class="form-label">Marker</label>
-        <select name="mark" class="form-control">
-            <option value="0" {% if not item.mark %} selected="selected" {% endif %}>none</option>
-            <option value="1" {% if item.mark == 1 %} selected="selected" {% endif %}>green</option>
-            <option value="2" {% if item.mark == 2 %} selected="selected" {% endif %}>yellow</option>
-            <option value="3" {% if item.mark == 3 %} selected="selected" {% endif %}>orange</option>
-            <option value="4" {% if item.mark == 4 %} selected="selected" {% endif %}>blue</option>
-            <option value="5" {% if item.mark == 5 %} selected="selected" {% endif %}>purple</option>
-            <option value="6" {% if item.mark == 6 %} selected="selected" {% endif %}>red</option>
-        </select>
+    <div class="row mb-3">
+        <div class="col-sm-6">
+            <label class="form-label">Marker</label>
+            <select name="mark" class="form-control">
+                <option value="0" {% if not item.mark %} selected="selected" {% endif %}>none</option>
+                <option value="1" {% if item.mark == 1 %} selected="selected" {% endif %}>green</option>
+                <option value="2" {% if item.mark == 2 %} selected="selected" {% endif %}>yellow</option>
+                <option value="3" {% if item.mark == 3 %} selected="selected" {% endif %}>orange</option>
+                <option value="4" {% if item.mark == 4 %} selected="selected" {% endif %}>blue</option>
+                <option value="5" {% if item.mark == 5 %} selected="selected" {% endif %}>purple</option>
+                <option value="6" {% if item.mark == 6 %} selected="selected" {% endif %}>red</option>
+            </select>
+        </div>
 
+        <div class="col-sm-6">
+            <label class="form-label">Status</label>
+            <select name="status" class="form-control">
+                <option value="todo" {% if not item.status or item.status == 'todo' %} selected="selected" {% endif %}>ToDo</option>
+                <option value="doing" {% if item.status == 'doing' %} selected="selected" {% endif %}>Doing</option>
+                <option value="done" {% if item.status == 'done' %} selected="selected" {% endif %}>Done</option>
+            </select>
+        </div>
     </div>
 
-    <div class="mb-3">
-        <label class="form-label">Status</label>
-        <select name="status" class="form-control">
-            <option value="todo" {% if not item.status or item.status == 'todo' %} selected="selected" {% endif %}>ToDo</option>
-            <option value="doing" {% if item.status == 'doing' %} selected="selected" {% endif %}>Doing</option>
-            <option value="done" {% if item.status == 'done' %} selected="selected" {% endif %}>Done</option>
-        </select>
+    <div class="row mb-3">
+        <div class="col-sm-3">
+            <label class="form-label">Order</label>
+            <input name="sort_order" class="form-control" type="number" value="{% if item.sort_order%}{{ item.sort_order }}{% else %}0{% endif %}" placeholder="Sort order">
+        </div>
     </div>
 
-    <div class="mb-3">
-        <label class="form-label">Order</label>
-        <input name="sort_order" class="form-control" type="number" value="{% if item.sort_order%}{{ item.sort_order }}{% else %}0{% endif %}" placeholder="Sort order">
-    </div>
+
 
     <button class="btn btn-primary" type="submit">Save post</button>
 </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', initFormListeners);
+
+
+        function initFormListeners(){
+            document.querySelector('[data-action="add-checkitem"]').addEventListener('click', addListItem);
+            document.addEventListener('click',removeListItem);
+        }
+
+
+        function addListItem(e) {
+            e.preventDefault()
+            const list = document.querySelector('#checklist');
+            const getItem = function (i){
+                return `  <li data-checkitem class="form-check">
+                                <input name="checklist[${i}][done]" type="checkbox" value="1" class="form-check-input">
+                                <label class="form-check-label">
+                                    <input name="checklist[${i}][text]" value="" placeholder="text here..." class="form-control">
+                                </label>
+                                <button data-action="remove-checkitem" class="btn btn-sm"><i class="bi bi-x-lg text-warning"></i></button>
+                            </li>`
+            };
+
+            let newItem = getItem(list.querySelectorAll('li').length+1)
+
+            list.innerHTML += newItem
+        }
+
+        function removeListItem(e){
+            if(e.target.getAttribute('data-action') === 'remove-checkitem'){
+                e.preventDefault()
+                e.target.parentElement.remove()
+            }
+        }
+
+    </script>
 
 {% endblock %}

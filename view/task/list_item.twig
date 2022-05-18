@@ -6,6 +6,25 @@
             <span class="text-secondary">{{ item.date }}</span>
         </div>
         <p class="card-text">{{ item.text }}</p>
+
+        {% if item.checklist %}
+        <div class="card-checklist">
+            <div class="card-checklist__stats">
+                <i class="bi bi-card-checklist text-success fs-5 align-middle"></i>
+                <span class="align-middle text-secondary fs-6">{{ item.checklist | filter((item) => (item.done == '1')) | length }} of  {{ item.checklist | length }}</span>
+            </div>
+            <ul class="list-unstyled">
+                {% for checkitem in item.checklist %}
+                    <li class="card-checklist__item {% if checkitem.done %} text-decoration-line-through {% endif %}">
+                        <input type="checkbox" disabled {% if checkitem.done %} checked="checked" {% endif %}>
+                        {{ checkitem.text }}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+
         <div class="d-flex flex-wrap w-100 justify-content-between">
             <div> <a href="/dashboard/{{ item.dashboard_id }}/task/{{ item.id }}" class="btn btn-sm btn-light"><i class="bi bi-arrow-right"></i></a>
                 <a href="/dashboard/{{ item.dashboard_id }}/task/{{ item.id }}/update/"  class="btn btn-sm btn-primary"><i class="bi bi-pencil"></i></a>
