@@ -4,10 +4,19 @@
 
 {% block content %}
     <h3>Your dashboards:</h3>
-    <ul>
+    <ol class="list-group list-group-numbered">
         {% for dashboard in dashboards %}
-            <li><a href="/dashboard/{{ dashboard.id }}">{{ dashboard.name }}</a></li>
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                   <a href="/dashboard/{{ dashboard.id }}" class="link-dark fw-bold">{{ dashboard.name }}</a>
+                    <div class="text-right">{{ dashboard.date }}</div>
+                </div>
+                <span class="badge {% if dashboard.total %} bg-primary {% else%} bg-dark bg-opacity-25 {% endif%} rounded-pill">{{ dashboard.total }} tasks</span>
+            </li>
         {% endfor %}
-    </ul>
+    </ol>
+
+
+
 
 {% endblock %}
