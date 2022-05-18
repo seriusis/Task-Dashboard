@@ -1,10 +1,8 @@
 <?php
 namespace app\view;
-class HomeView{
-    public static function render($data){
-        $loader = new \Twig\Loader\FilesystemLoader(__DIR__.'/');
-        $twig =  new \Twig\Environment($loader);
+class HomeView extends BaseView {
 
-        echo $twig->render('home/home.twig', $data);
+    public static function render(array $data):void{
+        parent::baseRender('home/home.twig', $data);
     }
 }

@@ -1,14 +1,10 @@
 <?php
 
 namespace app\view;
-class RegisterFormView
+class RegisterFormView extends BaseView
 {
-    public static function render($data)
+    public static function render(array $data):void
     {
-        $loader = new \Twig\Loader\FilesystemLoader(__DIR__.'/');
-        $twig =  new \Twig\Environment($loader);
-
-
-        echo $twig->render('user/register.twig',$data);
+        parent::baseRender('user/register.twig',$data);
     }
 }

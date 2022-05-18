@@ -2,19 +2,14 @@
 
 namespace app\view;
 
-use Twig\Environment;
-use Twig\Loader\FilesystemLoader;
+use Illuminate\Contracts\Console\Application;
 
-class DashboardView{
-    public static function renderOne($data){
-        $loader = new FilesystemLoader(__DIR__.'/');
-        $twig =  new Environment($loader);
-        echo $twig->render('dashboard/one.twig', $data);
+class DashboardView extends BaseView{
+    public static function renderOne(array $data):void{
+        parent::baseRender('dashboard/one.twig', $data);
     }
 
-    public static function renderAll($data){
-        $loader = new FilesystemLoader(__DIR__.'/');
-        $twig =  new Environment($loader);
-        echo $twig->render('dashboard/list.twig', $data);
+    public static function renderAll(array $data):void{
+        parent::baseRender('dashboard/list.twig', $data);
     }
 }

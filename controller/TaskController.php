@@ -5,18 +5,6 @@ use app\view\TaskView;
 use app\model\TaskModel;
 
 class TaskController{
-    public static function list():string{
-
-
-        $model = new TaskModel();
-        $data['items'] = $model->getAll();
-        $data['isLogged'] = UserController::isAuth();
-
-
-        TaskView::renderList($data);
-        return self::class;
-    }
-
 
     public static function task($dashboard_id, $task_id):string{
 
