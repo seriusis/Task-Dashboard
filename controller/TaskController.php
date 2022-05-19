@@ -40,6 +40,7 @@ class TaskController{
         $model = new TaskModel();
 
         if($_POST){
+            $_POST['id'] = $task_id;
             $model->update($_POST);
             header('Location:/dashboard/'.$dashboard_id);
         }

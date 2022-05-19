@@ -32,7 +32,6 @@ $router->post('/dashboard/(\d+)/task/create', 'TaskController@create');
 
 $router->get('/dashboard/(\d+)/task/(\d+)/update/', 'TaskController@update');
 $router->post('/dashboard/(\d+)/task/(\d+)/update/', 'TaskController@update');
-
 $router->get('/dashboard/(\d+)/task/(\d+)/delete/','TaskController@delete');
 
 
@@ -44,6 +43,14 @@ $router->post('/register/','RegisterController@register');
 
 $router->get('/dashboard','DashboardController@list');
 $router->get('/dashboard/(\d+)','DashboardController@get');
+
+$router->get('/dashboard/create','DashboardController@create');
+$router->post('/dashboard/create','DashboardController@create');
+
+$router->get('/dashboard/(\d+)/update/','DashboardController@update');
+$router->post('/dashboard/(\d+)/update/','DashboardController@update');
+
+$router->get('dashboard/(\d+)/delete/','DashboardController@delete');
 
 $router->before('GET|POST','list|task*|create|update*|delete*',function (){
     if(!UserController::isAuth())  {

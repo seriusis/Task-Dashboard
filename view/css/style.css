@@ -1,6 +1,10 @@
 body{
     background: #F6F8FA
 }
+a i, .btn i{
+    pointer-events: none;
+}
+
 .btn-primary{
     background-color: #2BCBCF;
     border-color: #2BCBCF;
@@ -74,7 +78,4 @@ body{
 .card-column-done .card-title{
     text-decoration: line-through;
     font-size: 14px;
-}
-[data-action='remove-checkitem'] > *{
-    pointer-events: none;
 }

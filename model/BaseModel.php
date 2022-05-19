@@ -18,7 +18,7 @@ class BaseModel{
     }
 
 
-    public function getById($id){
+    public function getById(int $id){
         return Capsule::table($this->table)
             ->where($this->id_column,'=',$id)
             ->get()
@@ -30,11 +30,11 @@ class BaseModel{
     }
 
 
-    public function update($id){
+    public function update($data){
 
     }
 
-    public function delete($id){
+    public function delete(int $id):void{
         Capsule::table($this->table)->delete($id);
     }
 }
