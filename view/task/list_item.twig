@@ -5,7 +5,10 @@
             <h5 class="card-title">{{ item.name }}</h5>
             <span class="text-secondary">{{ item.date }}</span>
         </div>
+
+        {% if item.text %}
         <p class="card-text">{{ item.text }}</p>
+        {% endif %}
 
         {% if item.checklist %}
         <div class="card-checklist">

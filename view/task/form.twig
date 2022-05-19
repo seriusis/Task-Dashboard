@@ -88,7 +88,7 @@
         function addListItem(e) {
             e.preventDefault()
             const list = document.querySelector('#checklist');
-            const getItem = function (i){
+            const getItemContent = function (i){
                 return `  <li data-checkitem class="form-check">
                                 <input name="checklist[${i}][done]" type="checkbox" value="1" class="form-check-input">
                                 <label class="form-check-label">
@@ -98,9 +98,11 @@
                             </li>`
             };
 
-            let newItem = getItem(list.querySelectorAll('li').length+1)
+            let newItem = document.createElement('li');
+            newItem.innerHTML = getItemContent(list.querySelectorAll('li').length+1)
 
-            list.innerHTML += newItem
+
+            list.appendChild(newItem)
         }
 
         function removeListItem(e){
