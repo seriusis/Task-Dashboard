@@ -45,7 +45,7 @@ class RegisterController{
 
     public static function validate($name, $email, $password):bool{
         if(mb_strlen($name) < 3) self::setError('Wrong name!');
-        if(!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/",$password)) self::setError('Your password is bad!');
+        if(strlen($password) < 6) self::setError('Your password is bad!');
 
         if(!filter_var($email,FILTER_VALIDATE_EMAIL)) self::setError('Wrong email!');
         $model = new UserModel();

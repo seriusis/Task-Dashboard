@@ -36,7 +36,7 @@ class UserModel extends BaseModel {
             ->pop();
     }
 
-    public function delete($id){
+    public function delete($id):void{
 
     }
 

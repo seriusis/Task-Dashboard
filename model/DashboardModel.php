@@ -34,7 +34,7 @@ class DashboardModel extends BaseModel{
     public function update($data)
     {
         Capsule::table($this->table)->where('id','=',$data['id'])->update([
-           'name' => $data['name']
+           'name' => $data['name'] ?: 'board'
         ]);
     }
 

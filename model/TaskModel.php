@@ -6,7 +6,6 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 class TaskModel extends BaseModel{
 //    private $id;
 //    private $name;
-//    private $text;
 //    private $status;
 
 
@@ -46,7 +45,8 @@ class TaskModel extends BaseModel{
     public function create($data)
     {
         Capsule::table($this->table)->insert([
-            'name' => $data['name'],
+            'name' => $data['name'] ?: 'task
+//    private $text;',
             'text' => $data['text'],
             'checklist' => serialize($data['checklist']),
             'mark' => $data['mark'],
@@ -60,7 +60,7 @@ class TaskModel extends BaseModel{
     public function update($data)
     {
         Capsule::table($this->table)->where('id','=',$data['id'])->update([
-            'name' => $data['name'],
+            'name' => $data['name'] ?: 'task',
             'text' => $data['text'],
             'checklist' => serialize($data['checklist']),
             'mark' => $data['mark'],

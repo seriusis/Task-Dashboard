@@ -13,7 +13,7 @@
                 </div>
                 <div>
                     <span class="badge {% if dashboard.total %} bg-primary {% else%} bg-dark bg-opacity-25 {% endif%} rounded-pill">{{ dashboard.total }} tasks</span>
-                    <a href="dashboard/{{ dashboard.id }}/update/" class="btn-link text-secondary btn-sm">Rename</a>
+                    <a href="/dashboard/{{ dashboard.id }}/update/" class="btn-link text-secondary btn-sm">Rename</a>
                     <a data-confirm data-confirm-text="Are you shure ? The Board will be removed with all tasks!" href="/dashboard/{{ dashboard.id }}/delete/" class="btn btn-sm text-warning"><i class="bi bi-trash2"></i></a>
 
                 </div>
