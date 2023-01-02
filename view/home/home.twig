@@ -3,7 +3,8 @@
 {% block content %}
 
     {% if isLogged %}
-
+        <h2>Hi, {{ username }}!</h2>
+        <h6>Go to <a href="/dashboard">your dashboards</a></h6>
         {% include "/user/user_stats.twig" %}
 
 

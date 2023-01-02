@@ -1,1 +1,41 @@
-user stats...
+<div class="row">
+
+    <div class="col-3">
+        <div class="card bg-transparent">
+            <ul class="list-group list-group-flush bg-transparent">
+                <li class="list-group-item bg-transparent"><h5 class="card-title"><i class="bi bi-person-circle"></i></h5>{{ fullname }}</li>
+                <li class="list-group-item bg-transparent">{{ email }}</li>
+            </ul>
+        </div>
+
+
+    </div>
+
+    <div class="col-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title"><i class="bi bi-card-heading"></i></h5>
+                <div class="fs-5">
+                    <span class="badge bg-info position-relative">
+                        dashboards
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        {{ dashboards_total }}
+                    </span>
+                    </span>
+                </div>
+                <div class="fs-5 mt-1">
+                    <span type="button" class="badge bg-info position-relative">
+                        tasks
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        {{ tasks_total }}
+                    </span>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</div>

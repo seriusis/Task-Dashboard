@@ -13,11 +13,11 @@ class AuthController{
                 $_SESSION['user_id'] = $auth->id;
                 $_SESSION['user_email'] = $auth->email;
                 $_SESSION['user_password'] = md5($auth->password);
-                header('Location:/dashboard');
             }else{
                 $_SESSION['error'] = 'Email or password wrong!';
-                header('Location:/');
             }
+
+            header('Location:/');
 
 
         }
